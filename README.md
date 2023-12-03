@@ -8,7 +8,7 @@ The todo list web application is a user-friendly and efficient tool developed us
 ## Features
 
 Introducing a quick-add feature to our todo list! Now, effortlessly add tasks by typing in the input box, and they'll appear at the top of your list instantly. A hassle-free way to stay organized and on top of your priorities.
-![App Photo](./assets/Images/Untitled2.png)
+
 ![Adding dos](./assets/Images/Untitled3.png)
 
 ## Testing
