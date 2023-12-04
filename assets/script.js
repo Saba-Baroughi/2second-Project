@@ -1,3 +1,9 @@
+// firstly get input then create function to that determine value,
+//delabarately choose the value condition like trim and for example
+//erase the input value. finally start to create the new element like li
+//check everywhere with console.log
+//finally to delet all the li write its function
+
 let $ = document;
 let inputElem = $.querySelector("input");
 let addTodoForm = $.querySelector(".add");
@@ -14,7 +20,6 @@ function addNewTodo(newTodoValue) {
   let newTodoTrash = $.createElement("i");
   newTodoTrash.className = "fa fa-trash-o delete";
 
-  //I do not know why here
   newTodoTrash.addEventListener("click", function (event) {
     // console.log(event); // gives event click
     // console.log(event.target); // i trash
@@ -39,7 +44,7 @@ inputElem.addEventListener("keydown", function (event) {
   //if there is value in input so firstly clear it
   if (event.keyCode === 13) {
     if (newTodoValue) {
-      inputElem.value = "";
+      inputElem.value = ""; // to erase the input to help user dont clean the input
       addNewTodo(newTodoValue);
     }
   }
