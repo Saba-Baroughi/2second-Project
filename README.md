@@ -23,13 +23,13 @@ Introducing a quick-add feature to our todo list! Now, effortlessly add tasks by
 
   - No errors were found when passing through the official [Jshint validator](https://jshint.com/)
 
-- There are 4 functions in this file.
+  - There are 4 functions in this file.
 
-- Function with the largest signature take 1 arguments, while the median is 1.
+  - Function with the largest signature take 1 arguments, while the median is 1.
 
-- Largest function has 10 statements in it, while the median is 3.
+  - Largest function has 10 statements in it, while the median is 3.
 
-- The most complex function has a cyclomatic complexity value of 3 while the median is 1.
+  - The most complex function has a cyclomatic complexity value of 3 while the median is 1.
 
 ### Unfixed Bugs
 
