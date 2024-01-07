@@ -1,9 +1,3 @@
-// firstly get input then create function to that determine value,
-//delabarately choose the value condition like trim and for example
-//erase the input value. finally start to create the new element like li
-//check everywhere with console.log
-//finally to delet all the li write its function
-
 let $ = document;
 let inputElem = $.querySelector("input");
 let addTodoForm = $.querySelector(".add");
@@ -21,8 +15,6 @@ function addNewTodo(newTodoValue) {
   newTodoTrash.className = "fa fa-trash-o delete";
 
   newTodoTrash.addEventListener("click", function (event) {
-    // console.log(event); // gives event click
-    // console.log(event.target); // i trash
     event.target.parentElement.remove(); //remove ul
   });
 
@@ -32,8 +24,7 @@ function addNewTodo(newTodoValue) {
 
   console.log(newTodoLi);
 }
-// here press Enter acts as submit because input is inside the Form,
-// here even if Submit can not do refresh the page
+
 addTodoForm.addEventListener("submit", function (event) {
   event.preventDefault();
 });
