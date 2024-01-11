@@ -27,3 +27,6 @@ input[type="text"]:focus {
 .filtered {
   display: none !important;
 }
+.done-item {
+  text-decoration: line-through;
+}

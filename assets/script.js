@@ -1,42 +1,70 @@
 let $ = document;
+let addTodoForm = $.querySelector("form");
 let inputElem = $.querySelector("input");
-let addTodoForm = $.querySelector(".add");
-let todoUlElem = $.querySelector(".todos");
-//parameter allows to add as much as you can otherwise we could not add more than once
-function addNewTodo(newTodoValue) {
+let todoUlElem = $.querySelector("ul");
+// Adding row to the list
+function addNewToDo(newTodoValue) {
   let newTodoLi = $.createElement("li");
   newTodoLi.className =
     "list-group-item d-flex justify-content-between align-items-center";
+  console.log(newTodoLi);
 
   let newTodoTitleSpan = $.createElement("span");
-  newTodoTitleSpan.innerHTML = newTodoValue;
-
+  newTodoTitleSpan.textContent = newTodoValue;
+  // Update items
+  let newTodoEdit = $.createElement("i");
+  newTodoEdit.className = "fa fa-pencil-square-o edit";
+  newTodoEdit.addEventListener("click", function () {
+    let editedValue = prompt("Edit todo:", newTodoValue);
+    if (editedValue !== null) {
+      newTodoTitleSpan.textContent = editedValue;
+      updateSequenceNumbers();
+    }
+  });
+  // Delete icon
   let newTodoTrash = $.createElement("i");
   newTodoTrash.className = "fa fa-trash-o delete";
-
-  newTodoTrash.addEventListener("click", function (event) {
-    event.target.parentElement.remove(); //remove ul
+  newTodoTrash.addEventListener("click", function () {
+    newTodoLi.remove();
+    updateSequenceNumbers();
   });
-
-  newTodoLi.append(newTodoTitleSpan, newTodoTrash);
-
+  // Check done
+  let newTodoDone = $.createElement("i");
+  newTodoDone.className = "fa fa-check-square-o done";
+  newTodoDone.addEventListener("click", function () {
+    newTodoTitleSpan.classList.toggle("done-item");
+  });
+  // appending to the li and Ul
+  newTodoLi.append(newTodoTitleSpan, newTodoEdit, newTodoTrash, newTodoDone);
   todoUlElem.append(newTodoLi);
-
-  console.log(newTodoLi);
 }
 
 addTodoForm.addEventListener("submit", function (event) {
   event.preventDefault();
 });
 
+// Enter key
 inputElem.addEventListener("keydown", function (event) {
   let newTodoValue = event.target.value.trim();
-  //Enter=13,
-  //if there is value in input so firstly clear it
   if (event.keyCode === 13) {
     if (newTodoValue) {
-      inputElem.value = ""; // to erase the input to help user dont clean the input
-      addNewTodo(newTodoValue);
+      inputElem.value = "";
+      addNewToDo(newTodoValue);
+      updateSequenceNumbers();
     }
   }
 });
+// Sequence numbers
+function updateSequenceNumbers() {
+  let todoItems = todoUlElem.children;
+  for (let i = 0; i < todoItems.length; i++) {
+    let sequenceNumberSpan = todoItems[i].querySelector("span");
+    sequenceNumberSpan.textContent =
+      i +
+      1 +
+      ". " +
+      sequenceNumberSpan.textContent.slice(
+        sequenceNumberSpan.textContent.indexOf(".") + 1
+      );
+  }
+}
